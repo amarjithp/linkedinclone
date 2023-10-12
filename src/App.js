@@ -29,19 +29,26 @@ function App() {
     })
   }, []);
 
+  const isMobile = navigator.userAgentData.mobile;
   return (
-    <div className="app">
-      <Header />
+    <>
+      {!isMobile ? (
+        <div className="app">
+          <Header />
 
-      {!user ? <Login /> : (
-        <div className="app__body">
-          <Sidebar />
-          <Feed />
-          <Widgets />
+          {!user ? <Login /> : (
+              <div className="app__body">
+                <Sidebar />
+                <Feed />
+                <Widgets />
+              </div>
+            )
+          }
         </div>
-      )}
-      
-    </div>
+    ) : (!user ? <Login /> : (
+      <Feed />
+    ))}
+  </>
   );
 }
 

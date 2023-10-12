@@ -9,6 +9,7 @@ import RepeatIcon from '@mui/icons-material/Repeat';
 
 const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
     // photoUrl
+const isMobile = navigator.userAgentData.mobile;
   return (
     <div ref={ref} className='post'>
         <div className="post__header">
@@ -28,7 +29,10 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
             <InputOption Icon={ThumbUpAltIcon} title="Like" color='gray' />
             <InputOption Icon={CommentIcon} title="Comment" color='gray' />
             <InputOption Icon={RepeatIcon} title="Repost" color='gray' />
-            <InputOption Icon={SendIcon} title="Send" color='gray' />
+            {!isMobile ? (
+                <InputOption Icon={SendIcon} title="Send" color='gray' />
+            ) : (null)
+            }
         </div>
     </div>
   )
