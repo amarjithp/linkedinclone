@@ -45,8 +45,9 @@ function App() {
             )
           }
         </div>
-    ) : (!user ? <Login /> : (
-      <Feed />
+    ) : (!user ? <Login /> : (<>
+      <Header />
+      <Feed /> </>
     ))}
   </>
   );

@@ -19,13 +19,14 @@ function Header() {
     dispatch(logout())
     auth.signOut();
   } 
-
+  const isMobile = navigator.userAgentData.mobile;
   return (
     <div className="header">
         
         <div className="header__left">
           
           <img src={linkedinlogo} alt="" />
+
 
           <div className="header__search">
             <SearchIcon />
@@ -35,11 +36,16 @@ function Header() {
         </div>
 
         <div className="header__right">
-          <HeaderOption Icon={HomeIcon} title="Home" />
-          <HeaderOption Icon={SupervisorAccountIcon} title="My Network" />
-          <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
-          <HeaderOption Icon={ChatIcon} title="Messaging" />
-          <HeaderOption Icon={NotificationsIcon} title="Notifications" />
+          {!isMobile ? (
+            <>
+              <HeaderOption Icon={HomeIcon} title="Home" />
+              <HeaderOption Icon={SupervisorAccountIcon} title="My Network" />
+              <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
+              <HeaderOption Icon={ChatIcon} title="Messaging" />
+              <HeaderOption Icon={NotificationsIcon} title="Notifications" />
+            </>
+          ) : (null)
+          }
           <HeaderOption 
             avatar={true}
             title="Me"
